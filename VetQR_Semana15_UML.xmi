@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<xmi:XMI xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.omg.org/spec/UML/20090901" xmi:version="2.1">
+  <uml:Model xmi:id="vetqr_model" name="VetQR - Semana 15 - Interacciones y Actividad">
+    <packagedElement xmi:type="uml:Package" xmi:id="semana15" name="Semana 15 - VetQR">
+      <packagedElement xmi:type="uml:Class" xmi:id="cl_pantalla" name="PantallaCuestionario"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="cl_gestor" name="GestorRespuestas"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="cl_repositorio" name="RepositorioVetQR"/>
+      <packagedElement xmi:type="uml:Collaboration" xmi:id="col_vetqr" name="VetQR - Comunicación">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="role_pantalla" name="pantalla" type="cl_pantalla"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="role_gestor" name="gestor" type="cl_gestor"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="role_repositorio" name="repositorio" type="cl_repositorio"/>
+        <ownedConnector xmi:type="uml:Connector" xmi:id="conn_pg">
+          <end xmi:id="conn_pg_end0" role="role_pantalla"/>
+          <end xmi:id="conn_pg_end1" role="role_gestor"/>
+        </ownedConnector>
+        <ownedConnector xmi:type="uml:Connector" xmi:id="conn_gr">
+          <end xmi:id="conn_gr_end0" role="role_gestor"/>
+          <end xmi:id="conn_gr_end1" role="role_repositorio"/>
+        </ownedConnector>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Interaction" xmi:id="seq_vetqr" name="VetQR - Secuencia">
+        <lifeline xmi:id="life_pantalla" name="pantalla"/>
+        <lifeline xmi:id="life_gestor" name="gestor"/>
+        <lifeline xmi:id="life_repositorio" name="repositorio"/>
+        <fragment xmi:type="uml:OccurrenceSpecification" xmi:id="send_0" covered="life_pantalla"/>
+        <fragment xmi:type="uml:OccurrenceSpecification" xmi:id="recv_0" covered="life_gestor"/>
+        <message xmi:id="msg_0" name="enviarRespuestas(cuestionario, respuestas)" messageSort="synchCall" sendEvent="send_0" receiveEvent="recv_0"/>
+        <fragment xmi:type="uml:OccurrenceSpecification" xmi:id="send_1" covered="life_gestor"/>
+        <fragment xmi:type="uml:OccurrenceSpecification" xmi:id="recv_1" covered="life_repositorio"/>
+        <message xmi:id="msg_1" name="consultarPreguntasObligatorias(cuestionario)" messageSort="synchCall" sendEvent="send_1" receiveEvent="recv_1"/>
+        <fragment xmi:type="uml:OccurrenceSpecification" xmi:id="send_2" covered="life_gestor"/>
+        <fragment xmi:type="uml:OccurrenceSpecification" xmi:id="recv_2" covered="life_repositorio"/>
+        <message xmi:id="msg_2" name="guardarRespuestas(respuestas)" messageSort="synchCall" sendEvent="send_2" receiveEvent="recv_2"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Activity" xmi:id="act_vetqr" name="VetQR - Actividad">
+        <node xmi:type="uml:InitialNode" xmi:id="n_start" name="Inicio"/>
+        <node xmi:type="uml:OpaqueAction" xmi:id="n_access" name="Acceder al cuestionario por web o QR"/>
+        <node xmi:type="uml:OpaqueAction" xmi:id="n_answer" name="Responder preguntas"/>
+        <node xmi:type="uml:OpaqueAction" xmi:id="n_validate" name="Validar respuestas obligatorias"/>
+        <node xmi:type="uml:DecisionNode" xmi:id="n_decision" name="¿Respuestas obligatorias completas?"/>
+        <node xmi:type="uml:OpaqueAction" xmi:id="n_save" name="Guardar respuestas"/>
+        <node xmi:type="uml:OpaqueAction" xmi:id="n_confirm" name="Mostrar confirmación de envío"/>
+        <node xmi:type="uml:OpaqueAction" xmi:id="n_inform" name="Informar preguntas pendientes"/>
+        <node xmi:type="uml:ActivityFinalNode" xmi:id="n_end_ok" name="Fin - Envío exitoso"/>
+        <node xmi:type="uml:ActivityFinalNode" xmi:id="n_end_bad" name="Fin - Envío no realizado"/>
+        <edge xmi:type="uml:ControlFlow" xmi:id="edge_0" source="n_start" target="n_access"/>
+        <edge xmi:type="uml:ControlFlow" xmi:id="edge_1" source="n_access" target="n_answer"/>
+        <edge xmi:type="uml:ControlFlow" xmi:id="edge_2" source="n_answer" target="n_validate"/>
+        <edge xmi:type="uml:ControlFlow" xmi:id="edge_3" source="n_validate" target="n_decision"/>
+        <edge xmi:type="uml:ControlFlow" xmi:id="edge_4" source="n_decision" target="n_save">
+          <guard xmi:type="uml:LiteralString" xmi:id="guard_4" value="completas"/>
+        </edge>
+        <edge xmi:type="uml:ControlFlow" xmi:id="edge_5" source="n_save" target="n_confirm"/>
+        <edge xmi:type="uml:ControlFlow" xmi:id="edge_6" source="n_confirm" target="n_end_ok"/>
+        <edge xmi:type="uml:ControlFlow" xmi:id="edge_7" source="n_decision" target="n_inform">
+          <guard xmi:type="uml:LiteralString" xmi:id="guard_7" value="incompletas"/>
+        </edge>
+        <edge xmi:type="uml:ControlFlow" xmi:id="edge_8" source="n_inform" target="n_end_bad"/>
+      </packagedElement>
+    </packagedElement>
+  </uml:Model>
+</xmi:XMI>

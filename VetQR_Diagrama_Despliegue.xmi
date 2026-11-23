@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<xmi:XMI xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.omg.org/spec/UML/20090901" xmi:version="2.1">
+  <uml:Model xmi:id="vetqr_model" name="VetQR - Sistema de cuestionarios y analisis veterinario">
+    <packagedElement xmi:type="uml:Package" xmi:id="vetqr_deployment" name="VetQR - Vista de despliegue">
+      <packagedElement xmi:type="uml:Device" xmi:id="dev_client" name="Dispositivo participante / administrador">
+        <nestedNode xmi:type="uml:ExecutionEnvironment" xmi:id="env_browser" name="Navegador web (acceso por QR)"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Device" xmi:id="dev_web" name="Servidor web">
+        <nestedNode xmi:type="uml:ExecutionEnvironment" xmi:id="env_web" name="Servidor HTTP / frontend React o Vue"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Device" xmi:id="dev_api" name="Servidor de aplicaciones">
+        <nestedNode xmi:type="uml:ExecutionEnvironment" xmi:id="env_api" name="Entorno de API web"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Device" xmi:id="dev_worker" name="Nodo de procesamiento de resultados">
+        <nestedNode xmi:type="uml:ExecutionEnvironment" xmi:id="env_worker" name="Worker Python / SQL"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Device" xmi:id="dev_db" name="Servidor de base de datos">
+        <nestedNode xmi:type="uml:ExecutionEnvironment" xmi:id="env_pg" name="PostgreSQL"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Artifact" xmi:id="art_front" name="Frontend VetQR (React/Vue)"/>
+      <packagedElement xmi:type="uml:Deployment" xmi:id="deployment_art_front" name="Despliegue de Frontend VetQR (React/Vue)" location="dev_web">
+        <deployedArtifact xmi:idref="art_front"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Artifact" xmi:id="art_api" name="API VetQR (P1, P2, P3, P5)"/>
+      <packagedElement xmi:type="uml:Deployment" xmi:id="deployment_art_api" name="Despliegue de API VetQR (P1, P2, P3, P5)" location="dev_api">
+        <deployedArtifact xmi:idref="art_api"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Artifact" xmi:id="art_worker" name="Procesamiento de resultados (P4)"/>
+      <packagedElement xmi:type="uml:Deployment" xmi:id="deployment_art_worker" name="Despliegue de Procesamiento de resultados (P4)" location="dev_worker">
+        <deployedArtifact xmi:idref="art_worker"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Artifact" xmi:id="art_schema" name="Esquema VetQR - tablas D1 a D8"/>
+      <packagedElement xmi:type="uml:Deployment" xmi:id="deployment_art_schema" name="Despliegue de Esquema VetQR - tablas D1 a D8" location="dev_db">
+        <deployedArtifact xmi:idref="art_schema"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Component" xmi:id="comp_p1" name="P1 Registro de participantes"/>
+      <packagedElement xmi:type="uml:Component" xmi:id="comp_p2" name="P2 Gestion de cuestionarios"/>
+      <packagedElement xmi:type="uml:Component" xmi:id="comp_p3" name="P3 Registro y validacion de respuestas"/>
+      <packagedElement xmi:type="uml:Component" xmi:id="comp_p4" name="P4 Procesamiento y vacios"/>
+      <packagedElement xmi:type="uml:Component" xmi:id="comp_p5" name="P5 Reportes y exportacion"/>
+      <packagedElement xmi:type="uml:Realization" xmi:id="real_comp_p1" name="Implementacion comp_p1" client="art_api" supplier="comp_p1"/>
+      <packagedElement xmi:type="uml:Realization" xmi:id="real_comp_p2" name="Implementacion comp_p2" client="art_api" supplier="comp_p2"/>
+      <packagedElement xmi:type="uml:Realization" xmi:id="real_comp_p3" name="Implementacion comp_p3" client="art_api" supplier="comp_p3"/>
+      <packagedElement xmi:type="uml:Realization" xmi:id="real_comp_p4" name="Implementacion comp_p4" client="art_worker" supplier="comp_p4"/>
+      <packagedElement xmi:type="uml:Realization" xmi:id="real_comp_p5" name="Implementacion comp_p5" client="art_api" supplier="comp_p5"/>
+      <packagedElement xmi:type="uml:CommunicationPath" xmi:id="path_https" name="HTTPS / JSON / acceso QR">
+        <ownedEnd xmi:id="end_https_a" type="dev_client" association="path_https"/>
+        <ownedEnd xmi:id="end_https_b" type="dev_web" association="path_https"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:CommunicationPath" xmi:id="path_api" name="HTTPS / JSON (API REST)">
+        <ownedEnd xmi:id="end_api_a" type="dev_web" association="path_api"/>
+        <ownedEnd xmi:id="end_api_b" type="dev_api" association="path_api"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:CommunicationPath" xmi:id="path_async" name="Procesamiento asincrono">
+        <ownedEnd xmi:id="end_async_a" type="dev_api" association="path_async"/>
+        <ownedEnd xmi:id="end_async_b" type="dev_worker" association="path_async"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:CommunicationPath" xmi:id="path_sqlapi" name="Conexion SQL">
+        <ownedEnd xmi:id="end_sqlapi_a" type="dev_api" association="path_sqlapi"/>
+        <ownedEnd xmi:id="end_sqlapi_b" type="dev_db" association="path_sqlapi"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:CommunicationPath" xmi:id="path_sqlworker" name="Conexion SQL">
+        <ownedEnd xmi:id="end_sqlworker_a" type="dev_worker" association="path_sqlworker"/>
+        <ownedEnd xmi:id="end_sqlworker_b" type="dev_db" association="path_sqlworker"/>
+      </packagedElement>
+    </packagedElement>
+  </uml:Model>
+</xmi:XMI>

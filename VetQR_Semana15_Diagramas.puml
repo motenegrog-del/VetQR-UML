@@ -1,0 +1,43 @@
+@startuml VetQR_Comunicacion
+title VetQR - Comunicación (envío exitoso)
+object pantalla
+object gestor
+object repositorio
+pantalla --> gestor : 1: enviarRespuestas(cuestionario, respuestas)
+gestor --> repositorio : 1.1: consultarPreguntasObligatorias(cuestionario)
+gestor --> repositorio : 1.2: guardarRespuestas(respuestas)
+@enduml
+
+@startuml VetQR_Secuencia
+title VetQR - Secuencia (envío exitoso)
+participant pantalla
+participant gestor
+participant repositorio
+pantalla -> gestor : enviarRespuestas(cuestionario, respuestas)
+activate gestor
+gestor -> repositorio : consultarPreguntasObligatorias(cuestionario)
+activate repositorio
+repositorio --> gestor : preguntas obligatorias
+deactivate repositorio
+gestor -> repositorio : guardarRespuestas(respuestas)
+activate repositorio
+repositorio --> gestor : registro confirmado
+deactivate repositorio
+deactivate gestor
+@enduml
+
+@startuml VetQR_Actividad
+title VetQR - Actividad
+start
+:Acceder al cuestionario por web o QR;
+:Responder preguntas;
+:Validar respuestas obligatorias;
+if (¿Respuestas completas?) then (completas)
+  :Guardar respuestas;
+  :Mostrar confirmación de envío;
+  stop
+else (incompletas)
+  :Informar preguntas pendientes;
+  stop
+endif
+@enduml

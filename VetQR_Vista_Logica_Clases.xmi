@@ -1,0 +1,279 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<xmi:XMI xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.omg.org/spec/UML/20110701" xmi:version="2.1">
+  <uml:Model xmi:id="model_vetqr" name="VetQR - Vista Logica UML">
+    <packagedElement xmi:type="uml:Package" xmi:id="pkg_vetqr" name="Vista Logica - VetQR">
+      <packagedElement xmi:type="uml:Class" xmi:id="c_Participante" name="Participante">
+        <ownedAttribute xmi:id="a_Participante_0" name="idParticipante" visibility="private" type="dt_Integer"/>
+        <ownedAttribute xmi:id="a_Participante_1" name="nombreCompleto" visibility="private" type="dt_String"/>
+        <ownedAttribute xmi:id="a_Participante_2" name="correoElectronico" visibility="private" type="dt_String"/>
+        <ownedAttribute xmi:id="a_Participante_3" name="telefono" visibility="private" type="dt_String"/>
+        <ownedAttribute xmi:id="a_Participante_4" name="categoriaClasificacion" visibility="private" type="dt_String"/>
+        <ownedAttribute xmi:id="a_Participante_5" name="fechaRegistro" visibility="private" type="dt_Date"/>
+        <ownedAttribute xmi:id="a_Participante_6" name="estadoParticipante" visibility="private" type="dt_Boolean"/>
+        <ownedOperation xmi:id="o_Participante_0" name="registrar" visibility="public">
+          <ownedParameter xmi:id="r_Participante_0" direction="return" type="dt_Boolean"/>
+        </ownedOperation>
+        <ownedOperation xmi:id="o_Participante_1" name="actualizarDatos" visibility="public">
+          <ownedParameter xmi:id="r_Participante_1" direction="return" type="dt_Boolean"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="c_AreaTematica" name="AreaTematica">
+        <ownedAttribute xmi:id="a_AreaTematica_0" name="idArea" visibility="private" type="dt_Integer"/>
+        <ownedAttribute xmi:id="a_AreaTematica_1" name="nombreArea" visibility="private" type="dt_String"/>
+        <ownedAttribute xmi:id="a_AreaTematica_2" name="descripcionArea" visibility="private" type="dt_String"/>
+        <ownedOperation xmi:id="o_AreaTematica_0" name="actualizar" visibility="public"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="c_Cuestionario" name="Cuestionario">
+        <ownedAttribute xmi:id="a_Cuestionario_0" name="idCuestionario" visibility="private" type="dt_Integer"/>
+        <ownedAttribute xmi:id="a_Cuestionario_1" name="titulo" visibility="private" type="dt_String"/>
+        <ownedAttribute xmi:id="a_Cuestionario_2" name="descripcion" visibility="private" type="dt_String"/>
+        <ownedAttribute xmi:id="a_Cuestionario_3" name="version" visibility="private" type="dt_Integer"/>
+        <ownedAttribute xmi:id="a_Cuestionario_4" name="estadoActivo" visibility="private" type="dt_Boolean"/>
+        <ownedAttribute xmi:id="a_Cuestionario_5" name="fechaCreacion" visibility="private" type="dt_Date"/>
+        <ownedOperation xmi:id="o_Cuestionario_0" name="activar" visibility="public"/>
+        <ownedOperation xmi:id="o_Cuestionario_1" name="desactivar" visibility="public"/>
+        <ownedOperation xmi:id="o_Cuestionario_2" name="validarEstructura" visibility="public">
+          <ownedParameter xmi:id="r_Cuestionario_2" direction="return" type="dt_Boolean"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="c_Pregunta" name="Pregunta">
+        <ownedAttribute xmi:id="a_Pregunta_0" name="idPregunta" visibility="private" type="dt_Integer"/>
+        <ownedAttribute xmi:id="a_Pregunta_1" name="textoPregunta" visibility="private" type="dt_String"/>
+        <ownedAttribute xmi:id="a_Pregunta_2" name="tipoPregunta" visibility="private" type="dt_String"/>
+        <ownedAttribute xmi:id="a_Pregunta_3" name="esObligatoria" visibility="private" type="dt_Boolean"/>
+        <ownedAttribute xmi:id="a_Pregunta_4" name="ordenVisualizacion" visibility="private" type="dt_Integer"/>
+        <ownedOperation xmi:id="o_Pregunta_0" name="validarRespuesta" visibility="public">
+          <ownedParameter xmi:id="r_Pregunta_0" direction="return" type="dt_Boolean"/>
+        </ownedOperation>
+        <ownedOperation xmi:id="o_Pregunta_1" name="actualizarContenido" visibility="public"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="c_OpcionRespuesta" name="OpcionRespuesta">
+        <ownedAttribute xmi:id="a_OpcionRespuesta_0" name="idOpcion" visibility="private" type="dt_Integer"/>
+        <ownedAttribute xmi:id="a_OpcionRespuesta_1" name="textoOpcion" visibility="private" type="dt_String"/>
+        <ownedAttribute xmi:id="a_OpcionRespuesta_2" name="ordenOpcion" visibility="private" type="dt_Integer"/>
+        <ownedAttribute xmi:id="a_OpcionRespuesta_3" name="valorPuntaje" visibility="private" type="dt_Decimal"/>
+        <ownedOperation xmi:id="o_OpcionRespuesta_0" name="actualizarOpcion" visibility="public"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="c_EnvioCuestionario" name="EnvioCuestionario">
+        <ownedAttribute xmi:id="a_EnvioCuestionario_0" name="idEnvio" visibility="private" type="dt_Integer"/>
+        <ownedAttribute xmi:id="a_EnvioCuestionario_1" name="fechaHoraEnvio" visibility="private" type="dt_DateTime"/>
+        <ownedAttribute xmi:id="a_EnvioCuestionario_2" name="estadoCompletado" visibility="private" type="dt_Boolean"/>
+        <ownedOperation xmi:id="o_EnvioCuestionario_0" name="validarObligatorias" visibility="public">
+          <ownedParameter xmi:id="r_EnvioCuestionario_0" direction="return" type="dt_Boolean"/>
+        </ownedOperation>
+        <ownedOperation xmi:id="o_EnvioCuestionario_1" name="finalizarEnvio" visibility="public">
+          <ownedParameter xmi:id="r_EnvioCuestionario_1" direction="return" type="dt_Boolean"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="c_DetalleRespuesta" name="DetalleRespuesta">
+        <ownedAttribute xmi:id="a_DetalleRespuesta_0" name="idDetalle" visibility="private" type="dt_Integer"/>
+        <ownedAttribute xmi:id="a_DetalleRespuesta_1" name="textoRespuestaAbierta" visibility="private" type="dt_String"/>
+        <ownedOperation xmi:id="o_DetalleRespuesta_0" name="registrarRespuesta" visibility="public"/>
+        <ownedOperation xmi:id="o_DetalleRespuesta_1" name="validar" visibility="public">
+          <ownedParameter xmi:id="r_DetalleRespuesta_1" direction="return" type="dt_Boolean"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="c_ResultadoProcesado" name="ResultadoProcesado">
+        <ownedAttribute xmi:id="a_ResultadoProcesado_0" name="idResultado" visibility="private" type="dt_Integer"/>
+        <ownedAttribute xmi:id="a_ResultadoProcesado_1" name="porcentajeAciertoConocimiento" visibility="private" type="dt_Decimal"/>
+        <ownedAttribute xmi:id="a_ResultadoProcesado_2" name="identificacionVacios" visibility="private" type="dt_String"/>
+        <ownedAttribute xmi:id="a_ResultadoProcesado_3" name="resumenTendencia" visibility="private" type="dt_String"/>
+        <ownedAttribute xmi:id="a_ResultadoProcesado_4" name="fechaCalculo" visibility="private" type="dt_DateTime"/>
+        <ownedOperation xmi:id="o_ResultadoProcesado_0" name="actualizarIndicadores" visibility="public"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="c_UsuarioAdministrador" name="UsuarioAdministrador">
+        <ownedAttribute xmi:id="a_UsuarioAdministrador_0" name="idUsuario" visibility="private" type="dt_Integer"/>
+        <ownedAttribute xmi:id="a_UsuarioAdministrador_1" name="nombreUsuario" visibility="private" type="dt_String"/>
+        <ownedAttribute xmi:id="a_UsuarioAdministrador_2" name="hashContrasena" visibility="private" type="dt_String"/>
+        <ownedAttribute xmi:id="a_UsuarioAdministrador_3" name="rolAcceso" visibility="private" type="dt_String"/>
+        <ownedAttribute xmi:id="a_UsuarioAdministrador_4" name="correoInstitucional" visibility="private" type="dt_String"/>
+        <ownedAttribute xmi:id="a_UsuarioAdministrador_5" name="estadoCuenta" visibility="private" type="dt_Boolean"/>
+        <ownedAttribute xmi:id="a_UsuarioAdministrador_6" name="ultimoAcceso" visibility="private" type="dt_DateTime"/>
+        <ownedOperation xmi:id="o_UsuarioAdministrador_0" name="autenticar" visibility="public">
+          <ownedParameter xmi:id="r_UsuarioAdministrador_0" direction="return" type="dt_Boolean"/>
+        </ownedOperation>
+        <ownedOperation xmi:id="o_UsuarioAdministrador_1" name="gestionarCuestionario" visibility="public"/>
+        <ownedOperation xmi:id="o_UsuarioAdministrador_2" name="consultarResultados" visibility="public"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="c_Reporte" name="Reporte">
+        <ownedAttribute xmi:id="a_Reporte_0" name="idReporte" visibility="private" type="dt_Integer"/>
+        <ownedAttribute xmi:id="a_Reporte_1" name="tipoAnalisis" visibility="private" type="dt_String"/>
+        <ownedAttribute xmi:id="a_Reporte_2" name="fechaGeneracion" visibility="private" type="dt_DateTime"/>
+        <ownedAttribute xmi:id="a_Reporte_3" name="resumenEjecutivo" visibility="private" type="dt_String"/>
+        <ownedOperation xmi:id="o_Reporte_0" name="generarResumen" visibility="public">
+          <ownedParameter xmi:id="r_Reporte_0" direction="return" type="dt_String"/>
+        </ownedOperation>
+        <ownedOperation xmi:id="o_Reporte_1" name="exportarPDF" visibility="public">
+          <ownedParameter xmi:id="r_Reporte_1" direction="return" type="dt_Binary"/>
+        </ownedOperation>
+        <ownedOperation xmi:id="o_Reporte_2" name="exportarExcel" visibility="public">
+          <ownedParameter xmi:id="r_Reporte_2" direction="return" type="dt_Binary"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="c_GestorParticipantes" name="GestorParticipantes">
+        <ownedOperation xmi:id="o_GestorParticipantes_0" name="registrarParticipante" visibility="public">
+          <ownedParameter xmi:id="r_GestorParticipantes_0" direction="return" type="dt_Participante"/>
+        </ownedOperation>
+        <ownedOperation xmi:id="o_GestorParticipantes_1" name="consultarParticipante" visibility="public">
+          <ownedParameter xmi:id="r_GestorParticipantes_1" direction="return" type="dt_Participante"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="c_GestorCuestionarios" name="GestorCuestionarios">
+        <ownedOperation xmi:id="o_GestorCuestionarios_0" name="agregarPregunta" visibility="public"/>
+        <ownedOperation xmi:id="o_GestorCuestionarios_1" name="modificarPregunta" visibility="public"/>
+        <ownedOperation xmi:id="o_GestorCuestionarios_2" name="eliminarPregunta" visibility="public"/>
+        <ownedOperation xmi:id="o_GestorCuestionarios_3" name="organizarCategorias" visibility="public"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="c_GestorRespuestas" name="GestorRespuestas">
+        <ownedOperation xmi:id="o_GestorRespuestas_0" name="validarEnvio" visibility="public">
+          <ownedParameter xmi:id="r_GestorRespuestas_0" direction="return" type="dt_Boolean"/>
+        </ownedOperation>
+        <ownedOperation xmi:id="o_GestorRespuestas_1" name="guardarRespuestas" visibility="public">
+          <ownedParameter xmi:id="r_GestorRespuestas_1" direction="return" type="dt_Boolean"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="c_AnalizadorResultados" name="AnalizadorResultados">
+        <ownedOperation xmi:id="o_AnalizadorResultados_0" name="procesarRespuestas" visibility="public"/>
+        <ownedOperation xmi:id="o_AnalizadorResultados_1" name="identificarTendencias" visibility="public"/>
+        <ownedOperation xmi:id="o_AnalizadorResultados_2" name="detectarVacios" visibility="public"/>
+        <ownedOperation xmi:id="o_AnalizadorResultados_3" name="calcularIndicadores" visibility="public"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="c_GeneradorReportes" name="GeneradorReportes">
+        <ownedOperation xmi:id="o_GeneradorReportes_0" name="generarReporte" visibility="public">
+          <ownedParameter xmi:id="r_GeneradorReportes_0" direction="return" type="dt_Reporte"/>
+        </ownedOperation>
+        <ownedOperation xmi:id="o_GeneradorReportes_1" name="exportarResultados" visibility="public">
+          <ownedParameter xmi:id="r_GeneradorReportes_1" direction="return" type="dt_Binary"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="assoc_0" name="Participante - EnvioCuestionario" memberEnd="end_0_0 end_0_1">
+        <ownedEnd xmi:id="end_0_0" type="c_Participante" name="participante" association="assoc_0">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="lowerValue1end_0_0" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="upperValue2end_0_0" value="1"/>
+        </ownedEnd>
+        <ownedEnd xmi:id="end_0_1" type="c_EnvioCuestionario" name="envioCuestionario" association="assoc_0">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="lowerValue1end_0_1" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="upperValue2end_0_1" value="*"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="assoc_1" name="Cuestionario - EnvioCuestionario" memberEnd="end_1_0 end_1_1">
+        <ownedEnd xmi:id="end_1_0" type="c_Cuestionario" name="cuestionario" association="assoc_1">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="lowerValue1end_1_0" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="upperValue2end_1_0" value="1"/>
+        </ownedEnd>
+        <ownedEnd xmi:id="end_1_1" type="c_EnvioCuestionario" name="envioCuestionario" association="assoc_1">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="lowerValue1end_1_1" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="upperValue2end_1_1" value="*"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="assoc_2" name="Cuestionario - Pregunta" memberEnd="end_2_0 end_2_1">
+        <ownedEnd xmi:id="end_2_0" type="c_Cuestionario" name="cuestionario" association="assoc_2" aggregation="composite">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="lowerValue1end_2_0" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="upperValue2end_2_0" value="1"/>
+        </ownedEnd>
+        <ownedEnd xmi:id="end_2_1" type="c_Pregunta" name="pregunta" association="assoc_2">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="lowerValue1end_2_1" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="upperValue2end_2_1" value="*"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="assoc_3" name="AreaTematica - Pregunta" memberEnd="end_3_0 end_3_1">
+        <ownedEnd xmi:id="end_3_0" type="c_AreaTematica" name="areaTematica" association="assoc_3">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="lowerValue1end_3_0" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="upperValue2end_3_0" value="1"/>
+        </ownedEnd>
+        <ownedEnd xmi:id="end_3_1" type="c_Pregunta" name="pregunta" association="assoc_3">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="lowerValue1end_3_1" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="upperValue2end_3_1" value="*"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="assoc_4" name="Pregunta - OpcionRespuesta" memberEnd="end_4_0 end_4_1">
+        <ownedEnd xmi:id="end_4_0" type="c_Pregunta" name="pregunta" association="assoc_4" aggregation="composite">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="lowerValue1end_4_0" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="upperValue2end_4_0" value="1"/>
+        </ownedEnd>
+        <ownedEnd xmi:id="end_4_1" type="c_OpcionRespuesta" name="opcionRespuesta" association="assoc_4">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="lowerValue1end_4_1" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="upperValue2end_4_1" value="*"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="assoc_5" name="EnvioCuestionario - DetalleRespuesta" memberEnd="end_5_0 end_5_1">
+        <ownedEnd xmi:id="end_5_0" type="c_EnvioCuestionario" name="envioCuestionario" association="assoc_5" aggregation="composite">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="lowerValue1end_5_0" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="upperValue2end_5_0" value="1"/>
+        </ownedEnd>
+        <ownedEnd xmi:id="end_5_1" type="c_DetalleRespuesta" name="detalleRespuesta" association="assoc_5">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="lowerValue1end_5_1" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="upperValue2end_5_1" value="*"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="assoc_6" name="Pregunta - DetalleRespuesta" memberEnd="end_6_0 end_6_1">
+        <ownedEnd xmi:id="end_6_0" type="c_Pregunta" name="pregunta" association="assoc_6">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="lowerValue1end_6_0" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="upperValue2end_6_0" value="1"/>
+        </ownedEnd>
+        <ownedEnd xmi:id="end_6_1" type="c_DetalleRespuesta" name="detalleRespuesta" association="assoc_6">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="lowerValue1end_6_1" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="upperValue2end_6_1" value="*"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="assoc_7" name="OpcionRespuesta - DetalleRespuesta" memberEnd="end_7_0 end_7_1">
+        <ownedEnd xmi:id="end_7_0" type="c_OpcionRespuesta" name="opcionRespuesta" association="assoc_7">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="lowerValue1end_7_0" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="upperValue2end_7_0" value="1"/>
+        </ownedEnd>
+        <ownedEnd xmi:id="end_7_1" type="c_DetalleRespuesta" name="detalleRespuesta" association="assoc_7">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="lowerValue1end_7_1" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="upperValue2end_7_1" value="*"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="assoc_8" name="AreaTematica - ResultadoProcesado" memberEnd="end_8_0 end_8_1">
+        <ownedEnd xmi:id="end_8_0" type="c_AreaTematica" name="areaTematica" association="assoc_8">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="lowerValue1end_8_0" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="upperValue2end_8_0" value="1"/>
+        </ownedEnd>
+        <ownedEnd xmi:id="end_8_1" type="c_ResultadoProcesado" name="resultadoProcesado" association="assoc_8">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="lowerValue1end_8_1" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="upperValue2end_8_1" value="*"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="assoc_9" name="Cuestionario - Reporte" memberEnd="end_9_0 end_9_1">
+        <ownedEnd xmi:id="end_9_0" type="c_Cuestionario" name="cuestionario" association="assoc_9">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="lowerValue1end_9_0" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="upperValue2end_9_0" value="1"/>
+        </ownedEnd>
+        <ownedEnd xmi:id="end_9_1" type="c_Reporte" name="reporte" association="assoc_9">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="lowerValue1end_9_1" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="upperValue2end_9_1" value="*"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="assoc_10" name="Reporte - ResultadoProcesado" memberEnd="end_10_0 end_10_1">
+        <ownedEnd xmi:id="end_10_0" type="c_Reporte" name="reporte" association="assoc_10" aggregation="shared">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="lowerValue1end_10_0" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="upperValue2end_10_0" value="*"/>
+        </ownedEnd>
+        <ownedEnd xmi:id="end_10_1" type="c_ResultadoProcesado" name="resultadoProcesado" association="assoc_10">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="lowerValue1end_10_1" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="upperValue2end_10_1" value="*"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Dependency" xmi:id="dep_11" name="GestorParticipantes usa Participante" client="c_GestorParticipantes" supplier="c_Participante"/>
+      <packagedElement xmi:type="uml:Dependency" xmi:id="dep_12" name="GestorCuestionarios usa Cuestionario" client="c_GestorCuestionarios" supplier="c_Cuestionario"/>
+      <packagedElement xmi:type="uml:Dependency" xmi:id="dep_13" name="GestorCuestionarios usa Pregunta" client="c_GestorCuestionarios" supplier="c_Pregunta"/>
+      <packagedElement xmi:type="uml:Dependency" xmi:id="dep_14" name="GestorRespuestas usa EnvioCuestionario" client="c_GestorRespuestas" supplier="c_EnvioCuestionario"/>
+      <packagedElement xmi:type="uml:Dependency" xmi:id="dep_15" name="GestorRespuestas usa DetalleRespuesta" client="c_GestorRespuestas" supplier="c_DetalleRespuesta"/>
+      <packagedElement xmi:type="uml:Dependency" xmi:id="dep_16" name="AnalizadorResultados usa ResultadoProcesado" client="c_AnalizadorResultados" supplier="c_ResultadoProcesado"/>
+      <packagedElement xmi:type="uml:Dependency" xmi:id="dep_17" name="AnalizadorResultados usa DetalleRespuesta" client="c_AnalizadorResultados" supplier="c_DetalleRespuesta"/>
+      <packagedElement xmi:type="uml:Dependency" xmi:id="dep_18" name="GeneradorReportes usa Reporte" client="c_GeneradorReportes" supplier="c_Reporte"/>
+      <packagedElement xmi:type="uml:Dependency" xmi:id="dep_19" name="GeneradorReportes usa ResultadoProcesado" client="c_GeneradorReportes" supplier="c_ResultadoProcesado"/>
+      <packagedElement xmi:type="uml:Dependency" xmi:id="dep_20" name="UsuarioAdministrador usa GestorCuestionarios" client="c_UsuarioAdministrador" supplier="c_GestorCuestionarios"/>
+      <packagedElement xmi:type="uml:Dependency" xmi:id="dep_21" name="UsuarioAdministrador usa GeneradorReportes" client="c_UsuarioAdministrador" supplier="c_GeneradorReportes"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="dt_Binary" name="Binary"/>
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="dt_Boolean" name="Boolean"/>
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="dt_Date" name="Date"/>
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="dt_DateTime" name="DateTime"/>
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="dt_Decimal" name="Decimal"/>
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="dt_Integer" name="Integer"/>
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="dt_String" name="String"/>
+  </uml:Model>
+</xmi:XMI>
